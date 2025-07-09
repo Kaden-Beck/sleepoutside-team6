@@ -9,7 +9,6 @@ function productCardTemplate(product) {
             <p class="product-card__price">$${product.FinalPrice}</p>
         </a>
     </li>`
-
 }
 
 export default class ProductList {
@@ -28,4 +27,4 @@ export default class ProductList {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
-  }
+}
