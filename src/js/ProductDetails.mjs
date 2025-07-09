@@ -9,6 +9,7 @@ export default class ProductDetails {
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
+
     this.renderProductDetails();
     document
       .getElementById("addToCart")
@@ -26,6 +27,7 @@ export default class ProductDetails {
   }
 }
 
+
 function productDetailsTemplate(product) {
   document.querySelector("h2").textContent = product.Brand.Name;
   document.querySelector("h3").textContent = product.NameWithoutBrand;
@@ -42,3 +44,4 @@ function productDetailsTemplate(product) {
 
   document.getElementById("addToCart").dataset.id = product.Id;
 }
+
