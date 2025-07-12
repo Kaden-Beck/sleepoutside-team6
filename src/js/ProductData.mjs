@@ -1,12 +1,6 @@
-import tents from '../json/tents.json'
+import { convertToJson } from "./utils.mjs";
 
-function convertToJson(res) {
-  if (res.ok) {
-    return res.json();
-  } else {
-    throw new Error('Bad Response');
-  }
-}
+import tents from '../json/tents.json'
 
 export default class ProductData {
   constructor(category) {
