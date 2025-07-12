@@ -29,16 +29,19 @@ export default class ProductDetails {
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
-    this.renderProductDetails(); hy.
-      document
+    this.renderProductDetails(); 
+
+    document
       .getElementById('addToCart')
       .addEventListener('click', this.addProductToCart.bind(this));
   }
+  
 
   addProductToCart() {
-    const cartItems = getLocalStorage('so-cart') || [];
+    const cartItems = getLocalStorage("so-cart") || [];
     cartItems.push(this.product);
-    setLocalStorage('so-cart', cartItems);
+    setLocalStorage("so-cart", cartItems);
+    console.log("Added to cart:", this.product); // For debugging
   }
 
   renderProductDetails() {
