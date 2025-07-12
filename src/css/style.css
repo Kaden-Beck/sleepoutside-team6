@@ -156,7 +156,7 @@ button {
   padding: 1rem;
 }
 
-.product-list, #cart-total {
+.product-list {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
