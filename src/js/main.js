@@ -8,7 +8,5 @@ const productList = new ProductList("Tents", dataSource, element);
 productList.init();
 
 import Alert from "./Alert";
-const alert = new Alert("../public/json/alerts.json")
+const alert = new Alert("../public/json/alerts.json");
 alert.init();
-
-
