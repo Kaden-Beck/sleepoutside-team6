@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -156,7 +156,8 @@ button {
   padding: 1rem;
 }
 
-.product-list {
+.product-list,
+#cart-total {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
