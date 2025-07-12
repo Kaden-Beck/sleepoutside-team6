@@ -1,10 +1,24 @@
 import { getLocalStorage } from './utils.mjs';
 
+
+
+
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart');
+  const cartItems = getLocalStorage('so-cart') || [];
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+
+  const cartTotal = cartItems.reduce(
+    (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
+    0
+  );
+
+  document.getElementById('cart-total').innerText = `Total: $${cartTotal.toFixed(2)}`;
 }
+
+
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class='cart-card divider'>
@@ -26,3 +40,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
