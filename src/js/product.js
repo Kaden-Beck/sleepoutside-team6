@@ -16,5 +16,5 @@ product.init();
 
 // // add listener to Add to Cart button
 // document
-//   .getElementById("addToCart")
-//   .addEventListener("click", addToCartHandler);
+//   .getElementById('addToCart')
+//   .addEventListener('click', addToCartHandler);
