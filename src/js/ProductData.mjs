@@ -1,17 +1,17 @@
 import { convertToJson } from "./utils.mjs";
 
+import tents from '../json/tents.json'
+
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.path = `../json/${this.category}.json`;
+    
   }
   getData() {
-    return fetch(this.path)
-      .then(convertToJson)
-      .then((data) => data);
+    return Promise.resolve(tents);
   }
   async findProductById(id) {
     const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    return products.find((item) => String(item.Id).toLowerCase() === String(id).toLowerCase());
   }
 }
