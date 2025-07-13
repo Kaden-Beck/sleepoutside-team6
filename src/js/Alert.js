@@ -26,6 +26,9 @@ export default class Alert {
   }
 
   renderAlerts(alertList) {
-    renderListWithTemplate(alertTemplate, alertElement, alertList);
+    if (alertList > 0) {
+      renderListWithTemplate(alertTemplate, alertElement, alertList);
+    }
+    
   }
 }
