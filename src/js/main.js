@@ -10,3 +10,7 @@ productList.init();
 import Alert from './Alert';
 const alert = new Alert('../public/json/alerts.json');
 alert.init();
+
+// ✅ Dark mode toggle
+import darkModeToggle from './darkModeToggle.mjs';
+darkModeToggle();
