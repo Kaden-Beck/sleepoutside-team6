@@ -23,12 +23,12 @@ export default class Alert {
     const alertData = await fetch(`../json/alerts.json`);
     const alertList = await convertToJson(alertData);
     this.renderAlerts(alertList);
+
   }
 
   renderAlerts(alertList) {
     if (alertList > 0) {
       renderListWithTemplate(alertTemplate, alertElement, alertList);
-    }
-    
+    }   
   }
 }

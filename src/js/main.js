@@ -10,7 +10,7 @@ const dataSource = new ProductData('tents');
 const element = document.querySelector('.product-list');
 const productList = new ProductList('tents', dataSource, element);
 
-const alert = new Alert('../public/json/alerts.json');
-alert.init();
-
 productList.init(); 
+
+const myAlert = new Alert('../public/json/alerts.json');
+myAlert.init();

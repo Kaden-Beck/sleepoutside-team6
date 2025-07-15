@@ -41,22 +41,22 @@ export function renderListWithTemplate(template, parentElement, list, position =
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement. innerHTML = template;
   if (callback) {
-  callback(data);
+    callback(data);
   }
 }
 
 export async function loadTemplate(path) {
   const response = await fetch(path);
-  const data = await response.text();
+  const template = await response.text();
   return template;
 }
 
-export function loadHeaderFooter() {
-  const headerTemplate = loadTemplate('../partials/header.html');
-  const headerElement = document.getElementById('maim-header');
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate('../partials/header.html');
+  const headerElement = document.getElementById('main-header');
   renderWithTemplate(headerTemplate, headerElement);
 
-  const footerTemplate = loadTemplate('../partials/footer.html');
-  const footerElement = document.getElementById('maim-footer');
+  const footerTemplate = await loadTemplate('../partials/footer.html');
+  const footerElement = document.getElementById('main-footer');
   renderWithTemplate(footerTemplate, footerElement);
 }
