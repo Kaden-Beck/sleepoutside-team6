@@ -12,5 +12,5 @@ const alert = new Alert('../public/json/alerts.json');
 alert.init();
 
 // ✅ Dark mode toggle
-import darkModeToggle from './darkModeToggle.mjs';
+import darkModeToggle from './darkModeToggle.mjs'; 
 darkModeToggle();

@@ -270,21 +270,14 @@ footer {
 
 /* 🌙 Dark Mode Styles */
 body.dark {
-  background-color: #121212;
-  color: #f1f1f1;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
 }
 
 body.dark header,
-body.dark nav,
 body.dark footer {
-  background-color: #1e1e1e;
-}
-
-body.dark a {
-  color: #90caf9;
-}
-
-body.dark .product-card {
   background-color: #2c2c2c;
-  border-color: #444;
+  color: #fff;
+}
+
 }
