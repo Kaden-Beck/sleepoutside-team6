@@ -60,6 +60,11 @@ p {
   color: var(--font-body);
 }
 
+.alert-list {
+  text-align: center;
+  font-weight: 600;
+}
+
 .hero {
   position: relative;
 }
@@ -156,7 +161,8 @@ button {
   padding: 1rem;
 }
 
-.product-list {
+.product-list,
+#cart-total {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
