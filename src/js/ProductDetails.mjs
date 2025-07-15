@@ -15,7 +15,7 @@ function getProductImage(product) {
     }
   }
 
-  return "/images/fallback.jpg"; // optional fallback
+  return '/images/fallback.jpg'; // optional fallback
 }
 
 
