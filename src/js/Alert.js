@@ -8,7 +8,7 @@ function alertTemplate(alert) {
 
 function convertToJson(res) {
   if (res.ok) {
-  return res.json();
+    return res.json();
   } else {
     throw new Error('Bad Response');
   }
@@ -23,12 +23,11 @@ export default class Alert {
     const alertData = await fetch(`../json/alerts.json`);
     const alertList = await convertToJson(alertData);
     this.renderAlerts(alertList);
-
   }
 
   renderAlerts(alertList) {
     if (alertList > 0) {
       renderListWithTemplate(alertTemplate, alertElement, alertList);
-    }   
+    }
   }
 }
