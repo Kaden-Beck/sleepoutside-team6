@@ -1,12 +1,21 @@
-import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
-
-
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+} from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage('so-cart') || [];
+  const cartItems = getCartContents();
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  document.querySelectorAll('.remove-button').forEach((button) => {
+    let buttonId = button.getAttribute('data-id');
+    button.addEventListener('click', () => {
+      removeItemById(buttonId);
+      renderCartContents();
+    });
+  });
 
   const cartTotal = cartItems.reduce(
     (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
@@ -29,11 +38,34 @@ function cartItemTemplate(item) {
     <h2 class='card__name'>${item.Name}</h2>
   </a>
   <p class='cart-card__color'>${item.Colors[0].ColorName}</p>
-  <p class='cart-card__quantity'>qty: 1</p>
+  <p class='cart-card__quantity'>qty: 1 
+    <span class='remove-button' data-id='${item.Id}'>
+      <strong>X</strong>
+    </span>
+  </p>
   <p class='cart-card__price'>$${item.FinalPrice}</p>
-</li>`;
+  </li>`;
 
   return newItem;
+}
+
+function getCartContents() {
+  return getLocalStorage('so-cart') || [];
+}
+
+function removeItemById(itemId) {
+  let cartContents = getCartContents();
+  let removedItem = false;
+  let index = 0;
+  cartContents.forEach((item) => {
+    if (item.Id == itemId && !removedItem) {
+      removedItem = true;
+    } else if (!removedItem) {
+      index++;
+    }
+  });
+  cartContents.splice(index, 1);
+  setLocalStorage('so-cart', cartContents);
 }
 
 loadHeaderFooter();
