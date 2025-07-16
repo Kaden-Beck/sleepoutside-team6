@@ -11,7 +11,6 @@ const productList = new ProductList('tents', dataSource, element);
 
 productList.init();
 
-import Alert from './Alert';
 const myAlert = new Alert('../public/json/alerts.json');
 myAlert.init();
 
