@@ -5,7 +5,6 @@ import ProductDetails from './ProductDetails.mjs';
 
 loadHeaderFooter();
 
-
 const productID = getParam('product');
 const dataSource = new ProductData();
 

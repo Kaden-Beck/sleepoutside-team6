@@ -15,7 +15,7 @@ import { getLocalStorage, setLocalStorage } from './utils.mjs';
 //     }
 //   }
 
-//   return "/images/fallback.jpg"; // optional fallback
+//   return '/images/fallback.jpg'; // optional fallback
 // }
 
 
