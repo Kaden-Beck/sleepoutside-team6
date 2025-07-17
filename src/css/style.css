@@ -95,9 +95,24 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  justify-items: center;
+}
+
+.product-grid li {
+  text-align: center;
+}
+
 
 /* utility classes */
 .highlight {
