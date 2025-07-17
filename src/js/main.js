@@ -4,6 +4,7 @@ import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
 import Alert from './Alert';
 
+
 loadHeaderFooter();
 
 const dataSource = new ProductData('tents');
