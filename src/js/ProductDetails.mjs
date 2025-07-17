@@ -1,37 +1,19 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
-//dynamically import all the tent images
-const tentImages = import.meta.glob('../images/tents/*.{jpg,png,jpeg}', {
-  eager: true,
-  import: 'default',
-});
-
-function getProductImage(product) {
-  const imageFilename = product.Image.split('/').pop().toLowerCase();
-
-  for (const [path, url] of Object.entries(tentImages)) {
-    if (path.toLowerCase().endsWith(imageFilename)) {
-      return url;
-    }
-  }
-
-  return '/images/fallback.jpg'; // optional fallback
-}
-
-
 export default class ProductDetails {
-
-  constructor(productId, dataSource) {
+  constructor(productId, dataSource, category) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
+    this.category = category;
   }
 
   async init() {
-    this.product = await this.dataSource.findProductById(this.productId);
-    this.renderProductDetails(); 
-      document
-      .getElementById('addToCart')
+    this.product = await this.dataSource.findProductById(this.productId, this.category);
+    console.log("Fetching product with ID:", this.productId);
+
+    this.renderProductDetails();
+    document.getElementById('add-to-cart')
       .addEventListener('click', this.addProductToCart.bind(this));
   }
 
@@ -42,24 +24,38 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
+    console.log('Product to render:', this.product);
     productDetailsTemplate(this.product);
   }
 }
 
 function productDetailsTemplate(product) {
-  document.querySelector('h2').textContent = product.Brand.Name;
-  document.querySelector('h3').textContent = product.NameWithoutBrand;
+  // Category (optional, fallback to empty string)
+  document.querySelector('#p-category').textContent =
+    product.Category ? product.Category.charAt(0).toUpperCase() + product.Category.slice(1) : '';
 
-  const productImage = document.getElementById('productImage');
-  // Clean up path and force it to root-relative
-  productImage.src = getProductImage(product);
-  productImage.alt = product.NameWithoutBrand;
+  // Brand (optional chaining)
+  document.querySelector('#p-brand').textContent = product.Brand?.Name || '';
 
-  document.getElementById('productPrice').textContent = product.FinalPrice;
-  document.getElementById('productColor').textContent =
-    product.Colors[0].ColorName;
-  document.getElementById('productDesc').innerHTML =
-    product.DescriptionHtmlSimple;
+  // Name
+  document.querySelector('#p-name').textContent = product.NameWithoutBrand || product.Name || '';
 
-  document.getElementById('addToCart').dataset.id = product.Id;
+  // Image (handle both formats)
+  const productImage = document.querySelector('#p-image');
+  productImage.src = product.Image || product.Images?.PrimaryExtraLarge || 'default-image.jpg';
+  productImage.alt = product.NameWithoutBrand || product.Name || '';
+
+  // Price (fallback to USD if FinalPrice missing)
+  const price = product.FinalPrice || product.ListPrice || product.SuggestedRetailPrice || 0;
+  const euroPrice = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(Number(price) * 0.85);
+  document.querySelector('#p-price').textContent = euroPrice;
+
+  // Color (optional chaining)
+  document.querySelector('#p-color').textContent = product.Colors?.[0]?.ColorName || '';
+
+  // Description
+  document.querySelector('#p-description').innerHTML = product.DescriptionHtmlSimple || '';
+
+  // Add to cart button
+  document.querySelector('#add-to-cart').dataset.id = product.Id;
 }
