@@ -1,6 +1,6 @@
 :root {
   --font-body: Arial, Helvetica, sans-serif;
-  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-headline: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
@@ -58,6 +58,11 @@ p {
 .logo a {
   text-decoration: none;
   color: var(--font-body);
+}
+
+.alert-list {
+  text-align: center;
+  font-weight: 600;
 }
 
 .hero {
@@ -156,7 +161,8 @@ button {
   padding: 1rem;
 }
 
-.product-list {
+.product-list,
+#cart-total {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
@@ -241,6 +247,25 @@ button {
   grid-column: 3;
 }
 
+footer {
+  font-size: var(--small-font);
+  padding: 1em;
+}
+
+.product-categories {
+  margin: 4rem 1rem 1rem 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.product-categories a {
+  text-decoration: none;
+  text-align: center;
+  color: var(--dark-grey);
+  font-weight: 600;
+  font-size: 14px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -255,9 +280,22 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
+  .product-categories {
+    padding: 0 15%;
+  }
 }
 
-footer {
-  font-size: var(--small-font);
-  padding: 1em;
+/* 🌙 Dark Mode Styles */
+body.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark header,
+body.dark footer {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
 }
