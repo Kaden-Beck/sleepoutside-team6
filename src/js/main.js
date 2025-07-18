@@ -2,6 +2,7 @@ import { loadHeaderFooter } from './utils.mjs';
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
 import Alert from './Alert';
+import darkModeToggle from './darkModeToggle.mjs';
 
 loadHeaderFooter();
 
@@ -14,6 +15,4 @@ productList.init();
 const myAlert = new Alert('../public/json/alerts.json');
 myAlert.init();
 
-// ✅ Dark mode toggle
-import darkModeToggle from './darkModeToggle.mjs'; 
 darkModeToggle();
