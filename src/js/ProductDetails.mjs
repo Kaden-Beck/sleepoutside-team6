@@ -56,10 +56,20 @@ function productDetailsTemplate(product) {
   productImage.alt = product.NameWithoutBrand;
 
   document.getElementById('productPrice').textContent = product.FinalPrice;
-  document.getElementById('productColor').textContent =
-    product.Colors[0].ColorName;
-  document.getElementById('productDesc').innerHTML =
-    product.DescriptionHtmlSimple;
+
+  const wishlistButton = document.createElement('button');
+  wishlistButton.textContent = 'Add to your Wishlist!';
+  wishlistButton.id = 'wishlistAdd';
+  wishlistButton.classList.add('wishlist-button');
+
+  document.getElementById('productDesc').appendChild(wishlistButton);
+
+  wishlistButton.addEventListener('click', () => {
+    addToWishlist(product);
+  });
+
+  document.getElementById('productColor').textContent = product.Colors[0].ColorName;
+  document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
 
   document.getElementById('addToCart').dataset.id = product.Id;
 }

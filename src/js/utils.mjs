@@ -28,14 +28,6 @@ export function getParam(param) {
   return product
 }
 
-<<<<<<< HEAD
-export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
-  const htmlStrings = list.map(template);
-  if (clear) {
-    parentElement.innerHTML = "";
-  }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-=======
 export function renderListWithTemplate(template, parentElement, list, position = 'afterbegin', clear = false) {
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
@@ -66,5 +58,4 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate('../partials/footer.html');
   const footerElement = document.getElementById('main-footer');
   renderWithTemplate(footerTemplate, footerElement);
->>>>>>> origin/main
 }

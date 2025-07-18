@@ -5,12 +5,6 @@ import {
 } from './utils.mjs';
 
 function renderCartContents() {
-<<<<<<< HEAD
-  const cartItems = getLocalStorage('so-cart') || [];
-
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
-=======
   const cartItems = getCartContents();
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -22,7 +16,6 @@ function renderCartContents() {
       renderCartContents();
     });
   });
->>>>>>> origin/main
 
   const cartTotal = cartItems.reduce(
     (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
@@ -56,9 +49,6 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-<<<<<<< HEAD
-renderCartContents();
-=======
 function getCartContents() {
   return getLocalStorage('so-cart') || [];
 }
@@ -81,4 +71,3 @@ function removeItemById(itemId) {
 loadHeaderFooter();
 
 renderCartContents();
->>>>>>> origin/main
