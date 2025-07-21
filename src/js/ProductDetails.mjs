@@ -42,8 +42,22 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    productDetailsTemplate(this.product);
+  console.log(this.product); 
+
+  productDetailsTemplate(this.product);
+
+  if (this.product.discount === true || this.product.discountPercentage > 0) {
+    const discountLabel = document.createElement("span");
+    discountLabel.classList.add("discount-flag");
+    discountLabel.textContent = "Sale!";
+
+    const container = document.querySelector(".product-detail");
+    if (container) {
+      container.prepend(discountLabel);
+    }
   }
+}
+
 }
 
 function productDetailsTemplate(product) {
