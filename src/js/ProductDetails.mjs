@@ -1,22 +1,22 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
 //dynamically import all the tent images
-const tentImages = import.meta.glob('../images/tents/*.{jpg,png,jpeg}', {
-  eager: true,
-  import: 'default',
-});
+// const tentImages = import.meta.glob('../images/tents/*.{jpg,png,jpeg}', {
+//   eager: true,
+//   import: 'default',
+// });
 
-function getProductImage(product) {
-  const imageFilename = product.Image.split('/').pop().toLowerCase();
+// function getProductImage(product) {
+//   const imageFilename = product.Image.split('/').pop().toLowerCase();
 
-  for (const [path, url] of Object.entries(tentImages)) {
-    if (path.toLowerCase().endsWith(imageFilename)) {
-      return url;
-    }
-  }
+//   for (const [path, url] of Object.entries(tentImages)) {
+//     if (path.toLowerCase().endsWith(imageFilename)) {
+//       return url;
+//     }
+//   }
 
-  return "/images/fallback.jpg"; // optional fallback
-}
+//   return '/images/fallback.jpg'; // optional fallback
+// }
 
 
 export default class ProductDetails {
@@ -43,9 +43,21 @@ export default class ProductDetails {
 
   renderProductDetails() {
     productDetailsTemplate(this.product);
+  productDetailsTemplate(this.product);
+
+  if (this.product.discount === true || this.product.discountPercentage > 0) {
+    const discountLabel = document.createElement("span");
+    discountLabel.classList.add("discount-flag");
+    discountLabel.textContent = "Sale!";
+
+    const container = document.querySelector(".product-detail");
+    if (container) {
+      container.prepend(discountLabel);
+    }
   }
 }
 
+}
 function productDetailsTemplate(product) {
   document.querySelector('h2').textContent = product.Brand.Name;
   document.querySelector('h3').textContent = product.NameWithoutBrand;
