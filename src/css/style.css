@@ -195,8 +195,7 @@ button {
 
 .product-card h2,
 .product-card h3,
-.product-card p,
-.newsletter p {
+.product-card p {
   margin: 0.5em 0;
 }
 
@@ -209,32 +208,6 @@ button {
 }
 
 /* End product list card */
-
-/* News Letter styles */
-.newsletter,
-#thank-you-email {
-  margin-top: 2rem;
-  padding: 1rem;
-}
-
-.newsletter p,
-#thank-you-email p {
-  margin: 0.5em 0;
-  padding-left: 0;
-}
-
-.newsletter input[type="email"] {
-  width: 50%;
-  max-width: 300px;
-  padding: 1em;
-  margin-bottom: 1rem;
-}
-
-.newsletter button {
-  margin-left: 0;
-}
-
-
 
 .product-detail {
   padding: 1em;
