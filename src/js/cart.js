@@ -5,18 +5,18 @@ import {
 } from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage('so-cart') || [];
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
 
   // ✅ Quantity update listener
-  document.querySelectorAll(".cart-qty").forEach(input => {
-    input.addEventListener("change", (e) => {
+  document.querySelectorAll('.cart-qty').forEach(input => {
+    input.addEventListener('change', (e) => {
       const productId = e.target.dataset.id;
       const newQty = parseInt(e.target.value);
 
-      let cart = getLocalStorage("so-cart") || [];
+      let cart = getLocalStorage('so-cart') || [];
       cart = cart.map(item => {
         if (item.Id === productId) {
           return { ...item, quantity: newQty };
@@ -24,33 +24,33 @@ function renderCartContents() {
         return item;
       });
 
-      setLocalStorage("so-cart", cart);
+      setLocalStorage('so-cart', cart);
       renderCartContents(); // Re-render with updated data
     });
   });
 
   // ✅ Remove item listener
-  document.querySelectorAll(".remove-item").forEach(button => {
+  document.querySelectorAll('.remove-item').forEach(button => {
 
-    button.addEventListener("click", (e) => {
+    button.addEventListener('click', (e) => {
       const span = e.target.closest('.remove-item');
       if (!span) return;
 
       const id = span.dataset.id;
 
-      let cart = getLocalStorage("so-cart") || [];
+      let cart = getLocalStorage('so-cart') || [];
       cart = cart.filter(item => item.Id !== id);
 
-      setLocalStorage("so-cart", cart);
+      setLocalStorage('so-cart', cart);
       renderCartContents(); // Re-render without the removed item
     });
   });
 
   // ✅ Update total
-  const cartTotal = cartItems.reduce((sum, item) => {
-    return sum + item.FinalPrice * (item.quantity || 1);
-  }, 0);
-  document.getElementById("cart-total").innerText = `Total: $${cartTotal.toFixed(2)}`;
+  const cartTotal = cartItems.reduce((sum, item) => 
+    sum + item.FinalPrice * (item.quantity || 1)
+  , 0);
+  document.getElementById('cart-total').innerText = `Total: $${cartTotal.toFixed(2)}`;
 }
 
 
@@ -68,7 +68,7 @@ function cartItemTemplate(item) {
   </a>
   <p class='cart-card__color'>${item.Colors[0].ColorName}</p>
   <p class='cart-card__quantity'>Quantity:
-  <input type="number" class="cart-qty" data-id="${item.Id}" min="1" value="${item.quantity || 1}" />
+  <input type='number' class='cart-qty' data-id='${item.Id}' min='1' value='${item.quantity || 1}' />
     <span class='remove-item' data-id='${item.Id}'>
       <strong>X</strong>
     </span>
