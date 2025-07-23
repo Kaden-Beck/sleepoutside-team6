@@ -211,12 +211,14 @@ button {
 /* End product list card */
 
 /* News Letter styles */
-.newsletter {
+.newsletter,
+#thank-you-email {
   margin-top: 2rem;
   padding: 1rem;
 }
 
-.newsletter p {
+.newsletter p,
+#thank-you-email p {
   margin: 0.5em 0;
   padding-left: 0;
 }
