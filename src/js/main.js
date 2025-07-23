@@ -27,7 +27,7 @@ if (newsletterForm) {
 
         if (email !== '') {
             localStorage.setItem('newsletterEmail', email);
-            window.location.href = '/sleepoutside-team6/thankyou.html';
+            window.location.href = '../thankyou.html';
         } else {
             alert('Please enter a valid email address.');
         }
@@ -41,6 +41,7 @@ if (newsletterForm) {
 const thankYouEmail = document.getElementById('thank-you-email');
 if (thankYouEmail) {
     const emailInput = localStorage.getItem('newsletterEmail');
+
     if (emailInput) {
         thankYouEmail.innerHTML = `
             <h2>Thank You!</h2>
