@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -76,9 +77,25 @@
           </figure></a
         >
       </div>
-      <button id="darkToggle" aria-label="Toggle dark mode">🌓</button>
-      <section class="products"></section>
-    </main>
-    <footer id="main-footer"></footer>
-  </body>
+      
+    <button id="darkToggle" aria-label="Toggle dark mode">🌓</button>
+    <section class='products'>
+      <h2>All Products</h2>
+      <ul class='product-list'></ul>
+    </section>
+    <section class="newsletter">
+      <h2>Newsletter</h2>
+      <p>
+        Sign up for our newsletter to receive updates on new products and special offers.
+      </p>
+      <form id='newsletter-form'>
+        <input type='email' id='newsletter-email' placeholder='Enter your email' required />
+        <button type='submit'>Subscribe</button>
+      </form>
+    </section>
+  </main>
+  <footer id='main-footer'></footer>
+</body>
+
 </html>
+
