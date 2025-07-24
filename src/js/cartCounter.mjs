@@ -7,7 +7,6 @@ export async function getItemCount() {
     let itemCount = cartItems.length;
     console.log(itemCount); 
     const countIndicator = document.querySelector("#itemCount");
-
-      countIndicator.innerHTML = itemCount;
+    countIndicator.innerHTML = itemCount;
 
 }

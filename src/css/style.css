@@ -354,6 +354,23 @@ footer {
   }
 }
 
+/* Counter Icon */
+
+#itemCount {
+  background-color: var(--primary-color);
+  font-size: .75em;
+  font-weight: 600;
+  padding: .2rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 15px
+}
+
+.cart a {
+  text-decoration: none;
+}
+
 /* 🌙 Dark Mode Styles */
 body.dark {
   background-color: #121212;
