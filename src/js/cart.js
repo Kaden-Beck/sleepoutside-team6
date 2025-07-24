@@ -33,7 +33,6 @@ function renderCartContents() {
 
   // ✅ Remove item listener
   document.querySelectorAll('.remove-item').forEach((button) => {
-
     button.addEventListener('click', (e) => {
       const span = e.target.closest('.remove-item');
       if (!span) return;
@@ -50,9 +49,11 @@ function renderCartContents() {
   // ✅ Update total
 
   const cartTotal = cartItems.reduce(
-    (sum, item) => sum + item.FinalPrice * (item.quantity || 1)
-  , 0);
-  document.getElementById('cart-total').innerText = `Total: $${cartTotal.toFixed(2)}`;
+    (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
+    0,
+  );
+  document.getElementById('cart-total').innerText =
+    `Total: $${cartTotal.toFixed(2)}`;
 }
 
 function cartItemTemplate(item) {
