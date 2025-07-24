@@ -2,7 +2,10 @@ import {
   getLocalStorage,
   setLocalStorage,
   loadHeaderFooter,
-} from './utils.mjs';
+} from "./utils.mjs";
+
+
+loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
@@ -11,13 +14,13 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
   // ✅ Quantity update listener
-  document.querySelectorAll(".cart-qty").forEach(input => {
+  document.querySelectorAll(".cart-qty").forEach((input) => {
     input.addEventListener("change", (e) => {
       const productId = e.target.dataset.id;
       const newQty = parseInt(e.target.value);
 
       let cart = getLocalStorage("so-cart") || [];
-      cart = cart.map(item => {
+      cart = cart.map((item) => {
         if (item.Id === productId) {
           return { ...item, quantity: newQty };
         }
@@ -30,16 +33,15 @@ function renderCartContents() {
   });
 
   // ✅ Remove item listener
-  document.querySelectorAll(".remove-item").forEach(button => {
-
+  document.querySelectorAll(".remove-item").forEach((button) => {
     button.addEventListener("click", (e) => {
-      const span = e.target.closest('.remove-item');
+      const span = e.target.closest(".remove-item");
       if (!span) return;
 
       const id = span.dataset.id;
 
       let cart = getLocalStorage("so-cart") || [];
-      cart = cart.filter(item => item.Id !== id);
+      cart = cart.filter((item) => item.Id !== id);
 
       setLocalStorage("so-cart", cart);
       renderCartContents(); // Re-render without the removed item
@@ -50,10 +52,9 @@ function renderCartContents() {
   const cartTotal = cartItems.reduce((sum, item) => {
     return sum + item.FinalPrice * (item.quantity || 1);
   }, 0);
-  document.getElementById("cart-total").innerText = `Total: $${cartTotal.toFixed(2)}`;
+  document.getElementById("cart-total").innerText =
+    `Total: $${cartTotal.toFixed(2)}`;
 }
-
-
 
 function cartItemTemplate(item) {
   const newItem = `<li class='cart-card divider'>
@@ -98,7 +99,5 @@ function cartItemTemplate(item) {
 //   setLocalStorage('so-cart', cartContents);
 // }
 
-loadHeaderFooter();
 
 renderCartContents();
-
