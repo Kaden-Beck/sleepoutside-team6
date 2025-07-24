@@ -1,6 +1,6 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from './utils.mjs';
 
-const alertElement = document.querySelector(".alert-list");
+const alertElement = document.querySelector('.alert-list');
 
 function alertTemplate(alert) {
   return `<p style='background: ${alert.background}; color: ${alert.color};'>${alert.message}</p>`;
@@ -10,7 +10,7 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    throw new Error('Bad Response');
   }
 }
 

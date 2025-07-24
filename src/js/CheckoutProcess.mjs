@@ -1,5 +1,5 @@
-import { getLocalStorage } from "./utils.mjs";
-import ExternalServices from "./ExternalServices.mjs";
+import { getLocalStorage } from './utils.mjs';
+import ExternalServices from './ExternalServices.mjs';
 
 const services = new ExternalServices();
 
@@ -45,10 +45,10 @@ export default class CheckoutProcess {
   calculateItemSummary() {
     // calculate and display the total amount of the items in the cart, and the number of items.
     const summaryElement = document.querySelector(
-      this.outputSelector + " #cartTotal"
+      this.outputSelector + ' #cartTotal'
     );
     const itemNumElement = document.querySelector(
-      this.outputSelector + " #num-items"
+      this.outputSelector + ' #num-items'
     );
     itemNumElement.innerText = this.list.length;
     // calculate the total of all the items in the cart
@@ -82,7 +82,7 @@ export default class CheckoutProcess {
   }
 
   async checkout() {
-    const formElement = document.forms["checkout"];
+    const formElement = document.forms['checkout'];
     const order = formDataToJSON(formElement);
 
     order.orderDate = new Date().toISOString();
