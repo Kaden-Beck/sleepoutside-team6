@@ -21,7 +21,7 @@
           <input type="hidden" name="orderDate" id="orderDate" />
 
           <fieldset>
-            <legend></legend>
+            <legend>Name</legend>
             <div class="checkout__name">
               <label for="fname">First Name</label>
               <input type="text" name="fname" id="fname" required />
@@ -55,17 +55,17 @@
           <fieldset class="checkout-summary">
             <legend>Order Summary</legend>
 
-            <div class="order__summary">
-              <div>Items</div>
-              <div id="num-items"></div>
-              <div>Subtotal</div>
-              <div id="cartTotal"></div>
-              <div>Tax</div>
-              <div id="tax"></div>
-              <div>Shipping</div>
-              <div id="shipping"></div>
-              <div>Total</div>
-              <div id="orderTotal"></div>
+            <div class="order-summary">
+              <div>Items:
+              <span id="num-items"></span></div>
+              <div>Subtotal:
+              <span id="cartTotal"></span></div>
+              <div>Tax:
+              <span id="tax"></span></div>
+              <div>Shipping:
+              <span id="shipping"></span></div>
+              <div>Total: 
+              <span id="orderTotal"></span></div>
             </div>
           </fieldset>
           <button type="submit" id="checkoutSubmit">Checkout</button>
