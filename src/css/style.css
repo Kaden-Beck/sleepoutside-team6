@@ -179,6 +179,10 @@ button {
   justify-content: center;
 }
 
+#cart-total {
+  margin: 1rem;
+}
+
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
@@ -231,6 +235,7 @@ button {
 .cart-card__image {
   grid-row: 1/3;
   grid-column: 1;
+  padding: 0 4px;
 }
 
 .cart-card p {
@@ -285,8 +290,9 @@ footer {
 
   & fieldset {
     margin: 8px 0;
+    border: 2px solid var(--primary-color);
     border-radius: 8px;
-    padding: 4px 1rem;
+    padding: 4px 2rem 1rem 2rem;
 
     & legend {
       margin: 8px;
@@ -299,9 +305,9 @@ footer {
     }
 
     & input {
-      margin: 4px 0;
+      margin: .25rem 0;
       padding: 4px;
-      min-width: 48px;
+      width: 100%;
       display: block;
       border-radius: 4px;
     }
@@ -316,6 +322,12 @@ footer {
 
   & span {
     font-weight: 500;
+  }
+
+  & #orderTotal_div {
+    border-top: 2px solid var(--primary-color);
+    padding: 1rem 0;
+
   }
 }
 
@@ -383,5 +395,26 @@ body.dark .product-card:hover {
 
   .product-categories {
     padding: 0 15%;
+  }
+
+  #cart {
+    display: grid;
+  }
+
+  .list-footer {
+    display: flex;
+    padding: .5rem;
+
+    & a {
+      padding: 0.5em 2em;
+      background-color: var(--secondary-color);
+      color: white;
+      margin: auto;
+      display: block;
+      border: 0;
+      font-size: var(--large-font);
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 }
