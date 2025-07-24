@@ -1,7 +1,7 @@
-import { loadHeaderFooter } from './utils.mjs';
+import { loadElements } from "./utils.mjs";
 import CheckoutProcess from './CheckoutProcess.mjs';
 
-loadHeaderFooter();
+loadElements();
 
 const order = new CheckoutProcess('so-cart', '.checkout-summary');
 order.init();
