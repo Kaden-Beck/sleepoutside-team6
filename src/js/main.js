@@ -1,15 +1,5 @@
-import { loadHeaderFooter } from './utils.mjs';
-import Alert from './Alert';
-import darkModeToggle from './darkModeToggle.mjs';
-
-loadHeaderFooter();
-
-// Create alerts
-const myAlert = new Alert('../public/json/alerts.json');
-myAlert.init();
-
-// Dark Mode Toggle
-darkModeToggle();
+import { loadElements } from './utils.mjs';
+loadElements();
 
 //Newsletter form functionality
 const newsletterForm = document.querySelector('#newsletter-form');
@@ -43,3 +33,5 @@ if (thankYouEmail) {
         `;
   }
 }
+
+
