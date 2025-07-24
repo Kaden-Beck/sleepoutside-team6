@@ -16,5 +16,5 @@ export default defineConfig({
         thankYou: resolve(__dirname, 'src/thankyou.html'),
       },
     },
-  },
+  }
 });
