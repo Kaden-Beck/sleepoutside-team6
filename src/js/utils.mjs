@@ -1,3 +1,8 @@
+import Alert from './Alert';
+import { getItemCount } from "./cartCounter.mjs";
+import darkModeToggle from './darkModeToggle.mjs'
+
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -38,7 +43,7 @@ export function renderListWithTemplate(template, parentElement, list, position =
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement. innerHTML = template;
+  parentElement.innerHTML = template;
   if (callback) {
     callback(data);
   }
@@ -50,6 +55,8 @@ export async function loadTemplate(path) {
   return template;
 }
 
+
+
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate('../partials/header.html');
   const headerElement = document.getElementById('main-header');
@@ -58,4 +65,15 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate('../partials/footer.html');
   const footerElement = document.getElementById('main-footer');
   renderWithTemplate(footerTemplate, footerElement);
+}
+
+export async function loadElements() {
+  await loadHeaderFooter();
+  // Create alerts
+  const myAlert = new Alert("../public/json/alerts.json");
+  myAlert.init();
+  // Show item count
+  getItemCount();
+  // Dark Mode Toggle
+  darkModeToggle();
 }
