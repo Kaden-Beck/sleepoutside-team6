@@ -1,6 +1,6 @@
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
-import { getParam, loadElements } from "./utils.mjs";
+import { getParam, loadElements } from './utils.mjs';
 
 loadElements();
 
