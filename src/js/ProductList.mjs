@@ -13,7 +13,6 @@ function productCardTemplate(product) {
       <button class="quick-view-btn" data-product-id="${product.Id}">Quick View</button>
 
         <div class="quick-view-details" style="display: none;">
-        <img src="${product.Images.PrimaryMedium}" alt="${product.Name}" />
         <p>${product.DescriptionHtmlSimple || "No description available"}</p>
         <p class="product-color">${product.Colors[0].ColorName}</p>
         <p class="product-price">$${product.FinalPrice}</p>
