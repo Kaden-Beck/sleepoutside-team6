@@ -1,5 +1,5 @@
-import { getLocalStorage, setLocalStorage, loadElements } from "./utils.mjs";
-import { getItemCount } from "./cartCounter.mjs";
+import { getLocalStorage, setLocalStorage, loadElements } from './utils.mjs';
+import { getItemCount } from './cartCounter.mjs';
 
 loadElements();
 

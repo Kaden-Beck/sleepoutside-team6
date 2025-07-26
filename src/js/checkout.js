@@ -1,4 +1,4 @@
-import { loadElements } from "./utils.mjs";
+import { loadElements } from './utils.mjs';
 import CheckoutProcess from './CheckoutProcess.mjs';
 
 loadElements();
