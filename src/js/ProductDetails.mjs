@@ -1,7 +1,6 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 import { getItemCount } from './cartCounter.mjs';
 export default class ProductDetails {
-
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
@@ -11,12 +10,9 @@ export default class ProductDetails {
   async init() {
     // use the datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     this.product = await this.dataSource.findProductById(this.productId);
-    // the product details are needed before rendering the HTML
-    this.renderProductDetails();
-    // once the HTML is rendered, add a listener to the Add to Cart button
-    // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
-    document
-      .getElementById('add-to-cart')
+    this.renderProductDetails(); 
+      document
+      .getElementById('addToCart')
       .addEventListener('click', this.addProductToCart.bind(this));
   }
 
@@ -28,8 +24,22 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    productDetailsTemplate(this.product);
+  console.log(this.product); 
+
+  productDetailsTemplate(this.product);
+
+  if (this.product.discount === true || this.product.discountPercentage > 0) {
+    const discountLabel = document.createElement("span");
+    discountLabel.classList.add("discount-flag");
+    discountLabel.textContent = "Sale!";
+
+    const container = document.querySelector(".product-detail");
+    if (container) {
+      container.prepend(discountLabel);
+    }
   }
+}
+
 }
 
 function productDetailsTemplate(product) {
@@ -37,16 +47,16 @@ function productDetailsTemplate(product) {
   document.querySelector('#p-brand').textContent = product.Brand.Name;
   document.querySelector('#p-name').textContent = product.NameWithoutBrand;
 
-  const productImage = document.querySelector('#p-image');
-  productImage.src = product.Images.PrimaryExtraLarge;
+  const productImage = document.getElementById('productImage');
+  // Clean up path and force it to root-relative
+  productImage.src = product.Images.PrimaryLarge;
   productImage.alt = product.NameWithoutBrand;
-  const euroPrice = new Intl.NumberFormat('de-DE',
-    {
-      style: 'currency', currency: 'EUR',
-    }).format(Number(product.FinalPrice) * 0.85);
-  document.querySelector('#p-price').textContent = `${euroPrice}`;
-  document.querySelector('#p-color').textContent = product.Colors[0].ColorName;
-  document.querySelector('#p-description').innerHTML = product.DescriptionHtmlSimple;
+
+  document.getElementById('productPrice').textContent = product.FinalPrice;
+  document.getElementById('productColor').textContent =
+    product.Colors[0].ColorName;
+  document.getElementById('productDesc').innerHTML =
+    product.DescriptionHtmlSimple;
 
   document.querySelector('#add-to-cart').dataset.id = product.Id;
 }
