@@ -1,9 +1,8 @@
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
-import Alert from './Alert';
-import { loadHeaderFooter, getParam } from './utils.mjs';
+import { getParam, loadElements } from "./utils.mjs";
 
-loadHeaderFooter();
+loadElements();
 
 // Render products by category
 const category = getParam('category');
@@ -16,6 +15,4 @@ myList.init();
 const pageHeading = document.querySelector('h2');
 pageHeading.innerHTML = `Top Products: ${category}`;
 
-// Create Alers
-const myAlert = new Alert('../public/json/alerts.json');
-myAlert.init();
+

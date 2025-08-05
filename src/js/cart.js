@@ -1,16 +1,14 @@
-import {
-  getLocalStorage,
-  setLocalStorage,
-  loadHeaderFooter,
-} from './utils.mjs';
+import { getLocalStorage, setLocalStorage, loadElements } from "./utils.mjs";
+import { getItemCount } from "./cartCounter.mjs";
 
-loadHeaderFooter();
+loadElements();
 
 function renderCartContents() {
   const cartItems = getLocalStorage('so-cart') || [];
 
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  getItemCount();
 
   // ✅ Quantity update listener
   document.querySelectorAll('.cart-qty').forEach((input) => {
@@ -47,7 +45,6 @@ function renderCartContents() {
   });
 
   // ✅ Update total
-
   const cartTotal = cartItems.reduce(
     (sum, item) => sum + item.FinalPrice * (item.quantity || 1),
     0,
