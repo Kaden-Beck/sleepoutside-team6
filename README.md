@@ -27,4 +27,4 @@ _BYU-Pathway Worldwide improves lives through access to spiritually based, onlin
 
 ### Netlify URL
 
-https://resilient-jelly-041834.netlify.app/
+https://wonderful-kulfi-572d2a.netlify.app/
