@@ -104,16 +104,6 @@ p {
   color: var(--tertiary-color);
 }
 
-.cart-qty {
-  width: 3em;
-}
-
-.remove-item {
-  cursor: pointer;
-  color: var(--tertiary-color);
-  margin-left: 0.5em;
-}
-
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -303,6 +293,16 @@ footer {
   color: var(--dark-grey);
   font-weight: 600;
   font-size: 14px;
+}
+
+/* Show Quick View */
+
+#quick-view {
+  display: none;
+}
+
+#quick-view.visible {
+  display: block;
 }
 
 /**************
